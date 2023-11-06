@@ -13,6 +13,7 @@ class Channel:
         self.__channel_id = channel_id
         self.youtube = youtube
         self.channel = self.youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
+        print(self.channel)
         self.title = self.channel["items"][0]["snippet"]['title']
         self.view_count = self.channel["items"][0]["statistics"]['viewCount']
         self.description = self.channel["items"][0]["snippet"]['description']
