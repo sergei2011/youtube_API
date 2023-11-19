@@ -8,17 +8,19 @@ class Video:
 
         self.channel_id = channel_id
         self.youtube = youtube
-        self.channel = self.youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
-        print(self.channel)
+        self.channel = self.youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
+                                       id=channel_id
+                                       ).execute()
+
         self.view_count = self.channel["items"][0]["statistics"]['viewCount']
-        self.description = self.channel["items"][0]["snippet"]['description']
-        self.subscriberCount = int(self.channel["items"][0]["statistics"]['subscriberCount'])
-        self.url = f"https://www.youtube/channels/{self.channel_id}"
+        self.title = self.channel['items'][0]['snippet']['title']
+        self.like_count = int(self.channel['items'][0]['statistics']['likeCount'])
+        self.comment_count = self.channel['items'][0]['statistics']['commentCount']
 
 
 
     def __str__(self):
-        return f"{self.description})"
+        return f"{self.title}"
 
 
 class PLVideo(Video):
