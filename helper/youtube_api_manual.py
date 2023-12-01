@@ -40,7 +40,7 @@ playlists = youtube.playlists().list(channelId=channel_id,
                                      part='contentDetails,snippet',
                                      maxResults=50,
                                      ).execute()
-# printj(playlists)
+# print(playlists)
 for playlist in playlists['items']:
     print(playlist)
     print()
