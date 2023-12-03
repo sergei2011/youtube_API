@@ -7,7 +7,6 @@ class PlayList:
     def __init__(self, playlist_id, title = None, url = None, youtube = build('youtube', 'v3', developerKey=os.getenv('API_KEY_YOUTUBE'))):
 
         self.playlist_id = playlist_id
-        #self.title = title
         self.url = url
         self.youtube = youtube
         self.playlist_videos = self.youtube.playlistItems().list(playlistId=playlist_id,
