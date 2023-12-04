@@ -24,7 +24,13 @@ class PlayList:
                                              part='contentDetails,snippet',
                                              maxResults=50,
                                              ).execute()
-        self.title = self.playlists['items'][0]['snippet']['title']
+        for video in self.playlists['items']:
+            #print(video['id'])
+            #print(self.playlist_id)
+            if video['id'] == self.playlist_id:
+                 #print(self.playlist_id)
+                 self.title = video['snippet']['title']
+            #print(self.title)
 
     @property
     def total_duration(self):
@@ -43,13 +49,17 @@ class PlayList:
             like = int(likes['statistics']['likeCount'])
             if max_like < like:
                 max_like = like
+                #print(max_like)
                 url_top = f"https://youtu.be/{likes['id']}"
+                #print(url_top)
         return url_top
+        #print(url_top)
 
 
 
 #pl = PlayList('PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw')
-#print(pl.title)
+#for video in pl.video_response['items']:
+    #print(video['statistics']['likeCount'])
 #for playlist in pl.playlist_videos['items']:
-#print(pl.total_duration())
+#print(pl.show_best_video())
 #так же не пойму про property, при вызове kb.change_lang(), без property print(kb.change_lang()) показывает адрес и assert в main проходит, с property выводит
