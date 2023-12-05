@@ -47,7 +47,7 @@ class PlayList:
         url_top = ""
         for likes in self.video_response['items']:
             like = int(likes['statistics']['likeCount'])
-            if max_like < like:
+            if max_like <= like:
                 max_like = like
                 #print(max_like)
                 url_top = f"https://youtu.be/{likes['id']}"
@@ -62,4 +62,3 @@ class PlayList:
     #print(video['statistics']['likeCount'])
 #for playlist in pl.playlist_videos['items']:
 #print(pl.show_best_video())
-#так же не пойму про property, при вызове kb.change_lang(), без property print(kb.change_lang()) показывает адрес и assert в main проходит, с property выводит
